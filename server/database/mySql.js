@@ -1,9 +1,21 @@
-const mongoose = require('mongoose');
-//Replace with real URL
-var mongoDB = 'mongodb://127.0.0.1/my_database';
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+const mysql = require('mysql');
+var connection = mysql.createConnection ({
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'IKEA'
+});
+connection.connect(function(err) {
+  if (err) {
+    console.log(err.stack);
+    return;
+  }
+  console.log('connected');
+});
+var getProduct = function (callback) {
+};
+var getStore = function (name, description, callback) {
+};
 
-//Set up connection
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+module.exports.getCows = getProduct;
+module.exports.addCows = getStore;
